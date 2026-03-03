@@ -1,0 +1,139 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Enums
+// ─────────────────────────────────────────────────────────────────────────────
+
+enum SceneType {
+  map
+  grid
+  article
+  gallery
+}
+
+enum NodeStatus {
+  published
+  draft
+}
+
+enum VideoStatus {
+  uploading
+  queued
+  processing
+  ready
+  error
+}
+
+enum UserRole {
+  super_admin
+  editor
+  viewer
+}
+
+enum VideoJobStatus {
+  pending
+  submitted
+  processing
+  completed
+  failed
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Node — core content unit, self-referencing tree
+// ─────────────────────────────────────────────────────────────────────────────
+
+model Node {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  name       String
+  slug       String    @unique
+  layerDepth Int       @map("layer_depth")
+
+  parentId String? @map("parent_id")
+  parent   Node?   @relation("NodeTree", fields: [parentId], references: [id], onDelete: Restrict)
+  children Node[]  @relation("NodeTree")
+
+  sceneType SceneType @map("scene_type")
+
+  coordinates   Json?   // { lat: number, lng: number }
+  iconUrl       String? @map("icon_url")
+  coverImageUrl String? @map("cover_image_url")
+
+  weight    Int @default(50)
+  sortOrder Int @default(0) @map("sort_order")
+
+  content Json?
+
+  status NodeStatus @default(draft)
+
+  videoStatus       VideoStatus? @map("video_status")
+  streamUrl         String?      @map("stream_url")
+  rawVideoS3Key     String?      @map("raw_video_s3_key")
+  videoDurationMs   Int?         @map("video_duration_ms")
+  mediaconvertJobId String?      @map("mediaconvert_job_id")
+
+  videoJobs VideoJob[]
+
+  @@index([parentId], name: "idx_nodes_parent_id")
+  @@index([slug], name: "idx_nodes_slug")
+  @@index([status], name: "idx_nodes_status")
+  @@index([layerDepth], name: "idx_nodes_layer_depth")
+  @@index([status, layerDepth], name: "idx_nodes_status_layer_depth")
+
+  @@map("nodes")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// User — role-based auth accounts
+// ─────────────────────────────────────────────────────────────────────────────
+
+model User {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  email        String    @unique
+  passwordHash String    @map("password_hash")
+  name         String
+  role         UserRole  @default(viewer)
+  isActive     Boolean   @default(true) @map("is_active")
+  lastLogin    DateTime? @map("last_login")
+
+  @@index([email], name: "idx_users_email")
+  @@map("users")
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// VideoJob — transcode audit log
+// ─────────────────────────────────────────────────────────────────────────────
+
+model VideoJob {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now()) @map("created_at")
+
+  nodeId String @map("node_id")
+  node   Node   @relation(fields: [nodeId], references: [id], onDelete: Cascade)
+
+  s3InputKey        String  @map("s3_input_key")
+  s3OutputPrefix    String  @map("s3_output_prefix")
+  mediaconvertJobId String? @map("mediaconvert_job_id")
+
+  status       VideoJobStatus @default(pending)
+  errorMessage String?        @map("error_message")
+
+  renditions  Json?
+  completedAt DateTime? @map("completed_at")
+
+  @@index([nodeId], name: "idx_video_jobs_node_id")
+  @@index([status], name: "idx_video_jobs_status")
+  @@map("video_jobs")
+}

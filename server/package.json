@@ -1,0 +1,44 @@
+{
+  "name": "world-explorer-server",
+  "version": "0.1.0",
+  "description": "World Explorer backend — Node.js + Express + Prisma",
+  "private": true,
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc --project tsconfig.json",
+    "start": "node dist/src/index.js",
+    "db:up": "docker compose -f ../docker-compose.yml up -d",
+    "db:down": "docker compose -f ../docker-compose.yml down",
+    "db:migrate": "prisma migrate dev",
+    "db:migrate:deploy": "prisma migrate deploy",
+    "db:seed": "prisma db seed",
+    "db:reset": "prisma migrate reset",
+    "db:studio": "prisma studio",
+    "db:generate": "prisma generate",
+    "postinstall": "prisma generate"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "6.5.0",
+    "bcryptjs": "2.4.3",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "16.4.7",
+    "express": "4.21.2",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "2.4.6",
+    "@types/cookie-parser": "^1.4.8",
+    "@types/express": "5.0.0",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/node": "22.13.9",
+    "prisma": "6.5.0",
+    "tsx": "4.19.3",
+    "typescript": "5.7.3"
+  }
+}
