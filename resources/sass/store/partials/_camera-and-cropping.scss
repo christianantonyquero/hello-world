@@ -1,0 +1,32 @@
+// Camera
+.camera-component {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    .camera-viewfinder {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #666;
+        background-color: #222;
+    }
+
+}
+// Cropping stuff
+.crop-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      
+    .cropper {
+        // vue-cropper component
+        margin-bottom: 1rem;
+    }
+}
+
+// PhotoGrabber - wrapper component to both camera and cropping
+.photo-grabber {
+
+}

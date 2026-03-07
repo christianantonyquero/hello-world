@@ -1,0 +1,80 @@
+.pb-dashboard-user-uploads-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid $gray-lightest;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+
+    .section-title {
+        font-size: 1.25rem;
+    }
+
+    a {
+        background-color: $green;
+        font-size: 14px;
+        color: white;
+        border-radius: 6px;
+        padding: 10px 16px;
+        line-height: 1;
+        display: inline-block;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+}
+.photo-booth-recent-uploads {
+    .list-title {
+        font-size: 1.125rem;
+    }
+    .image-info {
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid $gray-lighter;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        .img-col {
+            width: 45%;
+        }
+        .content-col {
+            width: 55%;
+            padding: 10px;
+        }
+        &:last-child {
+            margin-bottom: 0;
+            border-bottom: 0;
+        }
+        img {
+            max-width: 100%;
+        }
+        p {
+            font-size: 0.8rem;
+            line-height: 1.2;
+            margin-bottom: 5px;
+            span {
+                text-transform: uppercase;
+                font-size: 0.7rem;
+            }
+        }
+        .user {
+        }
+        .timestamp {
+        }
+    }
+}
+
+.pb-uploads-table {
+    .user-image {
+        width: 100px;
+    }
+    .btn, a.btn, a.btn.small {
+        border-radius: 6px;
+
+    }
+    .share-link {
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+}

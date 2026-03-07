@@ -1,0 +1,402 @@
+.photo-booth-page {
+  height: 100vh;
+  background-color: #FFE;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  overflow: scroll;
+
+	@include tablet {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+}
+
+.photo-booth-wrapper {
+	display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo-booth-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  .title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+}
+
+.photo-booth {
+  padding: $gap;
+  border-radius: $radius;
+  background-color: $black;
+  color: $white;
+  width: 900px;
+	max-width: 90%;
+	padding: 20px;
+  display: flex;
+	align-items: center;
+
+	.photobooth-image-container {
+		background: #232323;
+		border-radius: $radius;
+		position: relative;
+		overflow: hidden;
+    margin: 0 auto;
+
+    @include tablet {
+      height: 100%;
+      width: fit-content;
+    }
+
+    .size-helper {
+      display: block;
+      opacity: 0;
+      pointer-events: none;
+      object-fit: cover;
+      width: auto;
+
+      position: relative;
+      margin: 0;
+      padding: 0;
+      max-width: 100%;
+      max-height: 60vh;
+      min-height: 350px;
+    }
+
+		.container-content {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	}
+
+  .photobooth-columns {
+    // height: 100%;
+    display: flex;
+    align-items: center;
+    // justify-content: space-between;
+
+    .photobooth-image-container {
+      flex: none;
+      // height: auto;
+
+      .size-helper {
+        // width: 100%;
+        // height: auto;
+      }
+    }
+  }
+
+	.start-screen {
+    padding: 20px;
+
+		.open-camera {
+			width: 140px;
+			height: 140px;
+			border-radius: 50%;
+			background: $secondary;
+			text-align: center;
+			border: none;
+			cursor: pointer;
+			font-size: $size-4;
+			text-transform: uppercase;
+			padding: 20px;
+			line-height: 1.2em;
+      outline: none;
+      transition: all .2s ease;
+      margin-bottom: $gap;
+
+      &:hover {
+        transform: scale(.98);
+        background: darken($secondary, 5%);
+        box-shadow: inset 0 0 15px darken($secondary, 30%), 0px 0px 30px #000;
+      }
+		}
+	}
+
+  .instructions {
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    max-width: 200px;
+
+    p {
+      margin-bottom: 1rem;
+    }
+  }
+
+	.photobooth-loading {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+  .camera-screen, .photo-grabber {
+    width: 100%;
+    height: 100%;
+  }
+
+	.camera-viewfinder {
+		object-fit: cover;
+	}
+
+	.btn-take-photo {
+		position: absolute;
+		padding: 20px 10px;
+		bottom: 10px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 55px;
+		height: 55px;
+		text-indent: -9999px;
+		overflow: hidden;
+		border: none;
+		border-radius: 50%;
+		cursor: pointer;
+		background: rgba(#fff, .5);
+		transition: background .2s ease;
+		outline: none;
+
+		&:before {
+			content: '';
+			display: block;
+			width: 28px;
+			height: 21px;
+			background: url('../img/photobooth/camera.svg') no-repeat;
+			background-position: center;
+			position: absolute;
+			left: 14px;
+			top: 16px;
+		}
+
+		&:hover {
+			background: $secondary;
+		}
+	}
+
+  .countdown {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 70px;
+    width: 100%;
+    background: red;
+    color: $white;
+    text-align: center;
+    z-index: 5;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+      font-size: $size-4;
+      display: block;
+      padding: 0 20px;
+      opacity: .4;
+    }
+
+    img {
+      margin: 0 20px;
+      opacity: .4;
+    }
+
+    &.active {
+      opacity: 1;
+
+      span {
+        &:first-child { animation: countdown 1s .2s; }
+        &:nth-child(2) { animation: countdown 1s 1.2s; }
+        &:nth-child(3) { animation: countdown 1s 2.2s; }
+      }
+
+      img {
+        animation: countdown 1s 3.2s;
+      }
+    }
+  }
+
+	.review-photo {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	.review-buttons {
+		position: absolute;
+		bottom: 10px;
+		width: 100%;
+		padding: 0 10px;
+	}
+
+
+    // This class is used across multiple "screens" in the photo booth.
+  .user-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    background-color: #BBB;
+
+    img {
+      max-width: 100%;
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+	
+    
+  // User Image Stage
+  .image-stage {
+    .user-image {
+      position: absolute;
+      z-index: 20;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .backdrop-img {
+      position: relative;
+      cursor: pointer;
+      z-index: 10;
+      border: $radius;
+    }
+  }
+
+  .backdrop-picker {
+    width: 40%;
+    padding-left: 30px;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+
+    .picker-title {
+      text-align: center;
+      font-size: $size-4;
+      margin-bottom: 20px;;
+    }
+
+    .backdrop-list {
+      flex: 1;
+    }
+
+    .backdrop-list {
+      .backdrop-img {
+        display: block;
+        border: 2px solid transparent;
+        max-width: 100%;
+        background-color: white;
+        margin-bottom: 10px;
+        cursor: pointer;
+        border-radius: $radius;
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        &.selected {
+          border: 2px solid $white;
+        }
+      }
+    }
+  }
+
+	.notification {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+	}
+
+	.buttons.vertical {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: flex-start;
+
+    .button {
+      display: block;
+      width: 100%;
+    }
+	}
+
+// Trying to break stuff into their own components
+	.photo-share-screen {
+    background-color: $white;
+    border-radius: 7px;
+    padding: 1rem;
+    color: $black-bis;
+
+    .sharing-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .sharing-buttons {
+      width: 100%;
+      height: 100%;
+    }
+    .social-sharing-buttons {
+      width: 100%;
+    }
+
+    .btn-copy-link {
+      background-color: $gray;
+      color: white;
+    }
+		
+    .btn-take-new {
+      background-color: teal;
+      color: $white;
+      justify-self: flex-end;
+      margin-top: auto;
+    }
+	}
+
+	.button.facebook {
+		background-color: #4267B2;
+		color: white;
+	}
+	.button.twitter {
+		background-color: #1DA1F2;
+		color: white;
+	}
+}
+
+.photo-booth-share-page {
+  .pb-share-background-wrapper {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .pb-content-wrapper {
+    background-color: white;
+    padding: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

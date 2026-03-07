@@ -1,0 +1,26 @@
+// TYPOGRAPHY
+
+body {
+  font-family: $body-family;
+  font-weight: $weight-normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: $family-serif;
+  font-weight: 100;
+}
+
+.store-page .content {
+  h1 {
+    margin-bottom: 2rem;
+  }
+  p {
+    line-height: 1.5;
+  }
+}
+
+.help {
+  font-size: .8em;
+}

@@ -1,0 +1,35 @@
+.store-loading-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100000;
+    background-color: $black;
+    color: white;
+
+    .loading-msg,
+    .loaded-precent {
+        display: block;
+        line-height: 1;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .loading-msg {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        font-family: $family-sans-serif;
+    }
+    .loaded-precent {
+        font-size: 3rem;
+        font-weight: $weight-light;
+        font-family: $family-sans-serif;
+    }
+}

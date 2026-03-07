@@ -1,0 +1,34 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class AddVideoFieldsToStorePagesTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('store_pages', function (Blueprint $table) {
+            $table->string('background_video')->nullable();
+            $table->string('intro_video')->nullable();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('store_pages', function (Blueprint $table) {
+            $table->dropColumn('intro_video');
+            $table->dropColumn('background_video');
+        });
+    }
+}

@@ -1,0 +1,65 @@
+// Login Box
+
+$card-header-margin: 64px;
+
+#loginBox {
+    margin: -1.5rem auto;
+    height: 100vh;
+    @include displayFlex($justify: center, $align: center);
+
+    .row {
+        width: 100%;
+    }
+
+    .loginBoxWrapper {
+        padding-top: 0;
+
+        &.card {
+            padding: 0;
+        }
+
+        .card-header {
+            height: $card-header-margin;
+            margin: -1*$card-header-margin 0 0;
+            padding: 0;
+            // overflow: hidden;
+
+            li.nav-item {
+                width: 50%;
+            }
+
+            .card-header-tabs {
+                margin: 0;
+                height: 100%;
+            }
+
+            .nav-tabs .nav-link {
+                height: 100%;
+                @include displayFlex($direction: column, $justify: center);
+
+                &.active {
+                    background-color: $white;
+                }
+            }
+        }
+    }
+
+    .card-body {
+        padding: 2rem 2rem 1.5rem;
+        border-left: 1px solid $border;
+        border-right: 1px solid $border;
+        border-bottom: 1px solid $border;
+        border-bottom-left-radius: .25rem;
+        border-bottom-right-radius: .25rem;
+
+        h2 {
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+        }
+
+        .logo {
+            margin-bottom: 1rem;
+            max-width: 60px;
+        }
+    }
+}

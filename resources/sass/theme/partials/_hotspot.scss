@@ -1,0 +1,63 @@
+// HOTSPOT .SCSS
+
+.no-webp .hotspot-list .hotspot:before {
+  background-image: url('../img/store/hotspots/hotspot.png');
+}
+.hotspot-list {
+
+  .hotspot {
+    background: transparent;
+    width: 76px;
+    height: 76px;
+    margin: -38px 0 0 -38px;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-image: url('../img/store/hotspots/hotspot.webp');
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    &.back:before {
+      background-image: url('../img/store/hotspots/hotspot-back.png');
+    }
+
+    &.left:before {
+      background-image: url('../img/store/hotspots/left-arrow.png');
+      opacity: .6;
+    }
+
+    &.right:before {
+      background-image: url('../img/store/hotspots/right-arrow.png');
+      opacity: .6;
+    }
+
+    &.happy:before {
+      background-image: url('../img/store/hotspots/happy.webp');
+      opacity: 1;
+    }
+    
+    .name {
+      top: 20px; //$hotspot-font-size * -1.5
+      z-index: 10;
+    }
+
+    &:hover {
+      width: 140px;
+      height: 140px;
+      margin: -70px 0 0 -70px;
+      box-shadow: none;
+      border: none;
+      background-color: transparent;
+    }
+  }
+}

@@ -1,0 +1,100 @@
+// Store General
+
+.store-wrapper{
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+.store-content{
+    width: 100%;
+    margin-top: 15px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    min-height: calc(100vh - 30px);
+    background-color: white;
+    z-index: 2;
+    border-radius: 24px;
+    @include boxShadow;
+
+    @media screen and (max-width: $tablet) {
+        margin: 0;
+        border-radius: 0;
+        min-height: 100vh;
+    }
+
+    h2.store-name {
+
+        @media screen and (max-width: $tablet) {
+            font-size: 1.125rem;
+            max-width: 55%;
+        }
+    }
+
+    .content{
+        padding: 20px 25px 60px;
+
+        @media screen and (max-width: $tablet) {
+            padding: 10px 10px 30px;
+        }
+    }
+
+    .store-nav {
+        padding-right: 0;
+        padding-top: 1rem;
+
+        @media screen and (max-width: $tablet) {
+            padding-right: 10px;
+        }
+    }
+}
+
+.featuredCallout {
+    position: relative;
+    background-color: $secondaryColorDk;
+    @include boxShadow($distance: 35px, $spread: -25px, $blur: 55px, $color: rgba(0,0,0,.3));
+    margin: 0 10px 40px;
+    padding: 18vw 6vw 6vw;
+    color: $white;
+    border-radius: 24px;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+
+    @media screen and (max-width: $tablet) {
+        margin: 0 0 40px;
+        max-width: none;
+        padding: 24vw 6vw 9vw;
+    }
+
+    &:before {
+        content: '';
+        mix-blend-mode: multiply;
+        position:  absolute;
+        background-color: rgba($secondaryColorDk,.3);
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        z-index: 1;
+    }
+
+    .caption {
+        position: relative;
+        z-index: 2;
+        max-width: 420px;
+    }
+
+    .ftTitle {
+        color: $white;
+        line-height: 1;
+        font-size: calc(1vw + 32px);
+    }
+
+    a.btn {
+        display: inline-flex;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}

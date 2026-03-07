@@ -1,0 +1,36 @@
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+.env.testing
+.env.dusk.local
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+database/sqlite.testing.database
+
+# Don't store complied css / js in the repo, make that part of the build step
+/public/css
+/public/js
+
+# I think I should ignore this too
+public/mix-manifest.json
+
+# Debug bar
+/storage/debugbar/
+
+# System files
+.DS_Store
+
+public/images/store/cart-empty.svg
+
+public/images/store/cart-full.svg
+
+public/images/store/cart.svg
+
+autoconf*

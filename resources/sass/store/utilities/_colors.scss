@@ -1,0 +1,32 @@
+$black: hsl(0, 0%, 4%);
+$black-bis: hsl(0, 0%, 7%);
+$black-ter: hsl(0, 0%, 14%);
+
+$gray-darker: hsl(0, 0%, 21%);
+$gray-dark: hsl(0, 0%, 29%);
+$gray: hsl(0, 0%, 48%);
+$gray-light: hsl(0, 0%, 71%);
+$gray-lighter: hsl(0, 0%, 86%);
+$gray-lightest: #F5F5F5;
+
+$white-ter: hsl(0, 0%, 96%);
+$white-bis: hsl(0, 0%, 98%);
+$white: hsl(0, 0%, 100%);
+
+$orange: hsl(14, 100%, 53%);
+$yellow: hsl(48, 100%, 67%);
+$green: hsl(141, 53%, 53%);
+$turquoise: hsl(171, 100%, 41%);
+$cyan: hsl(204, 71%, 53%);
+$blue: #0083FF;
+$red: hsl(348, 86%, 61%);
+
+$purple: #2C2F64;
+$purple_dark: #323458;
+$pink: #FE0087;
+
+$error: #F70083;
+$success: #27C18A;
+$primary: #9900cc;
+$secondary: $green;
+$secondary-invert: findColorInvert($secondary);

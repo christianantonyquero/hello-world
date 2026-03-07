@@ -1,0 +1,62 @@
+// VUE TRANSITIONS.SCSS
+.fade-enter-active {
+    transition: opacity 0.3s ease;
+}
+.fade-leave-active {
+    transition: opacity 0.3s ease;
+}
+
+.fade-transition-enter,
+.fade-transition-leave-to {
+    // -enter is appearing final state 
+    // -leave-to is leaving final state
+    opacity: 0;
+}
+
+
+// Product Listing hover transistions
+  .img-hover-fade-enter-active {
+      transition: all 0.2s ease;
+  }
+
+  .img-hover-fade-leave-active {
+      opacity: 0.2;
+  }
+
+  .img-hover-fade-enter {
+      opacity: 0;
+  }
+
+  .img-hover-fade-to {
+      opacity: 0.5;
+  }
+
+  .img-hover-fade-leave-to {
+      opacity: 0.2;
+  }
+
+  // simple fade used by the photo booth
+  .simple-fade-enter-active,
+  .simple-fade-leave-active {
+      transition: opacity .1s;
+  }
+
+  .simple-fade-enter,
+  .simple-fade-leave-to {
+      opacity: 0;
+  }
+
+  // You'll never see the exit leave/exit transtion b/c the 
+  // hotspot fires and navigates before the transition runs
+  .hotspot-video-transition-enter-active {
+      transition: all 0.3s ease;
+  }
+
+  .hotspot-video-transition-leave-active {
+      transition: all 1s ease-out;
+  }
+
+  .hotspot-video-transition-enter,
+  .hotspot-video-transition-leave-to {
+      opacity: 0;
+  }

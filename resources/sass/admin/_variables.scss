@@ -1,0 +1,73 @@
+// @import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Open+Sans:ital,wght@0,400;0,700;1,400&display-swap');
+
+
+// Reponsive
+$smMobile: 380px;
+$mobile: 640px;
+$tablet: 800px;
+$smDesktop: 1024px;
+$desktop: 1300px;
+$lgDesktop: 1600px;
+$xlgDesktop: 1800px;
+
+$shortDesktop: 700px;
+
+// Body
+$body-bg: #F0F0F0;
+
+// Accent
+$border: #D8D8D8;
+
+// Layout
+$paddingLR: 6vw;
+
+// Colors
+$black: hsl(0, 0%, 4%);
+$black-bis: hsl(0, 0%, 7%);
+$black-ter: hsl(0, 0%, 14%);
+
+$gray-darker: hsl(0, 0%, 21%);
+$gray-dark: hsl(0, 0%, 29%);
+$gray: hsl(0, 0%, 48%);
+$gray-light: hsl(0, 0%, 71%);
+$gray-lighter: hsl(0, 0%, 86%);
+$gray-lightest: hsl(0, 0%, 93%);
+
+$white-ter: hsl(0, 0%, 96%);
+$white-bis: hsl(0, 0%, 98%);
+$white: hsl(0, 0%, 100%);
+
+$blue: #3490dc;
+/*
+$indigo: #6574cd;
+$purple: #9561e2;
+$pink: #f66d9b;
+$red: #e3342f;
+$orange: #f6993f;
+$yellow: #FFBA27;
+$green: #46E16E;
+$teal: #4dc0b5;
+$cyan: #6cb2eb;
+*/
+
+$primaryColor: #1E9DFF;
+$secondaryColor: #1C4C9A;
+$secondaryColorDk: #163A66;
+$tertiaryColor: #FFBA27;
+
+// Bootstrap Tweaks
+$grid-gutter-width: 20px !default;
+
+// Typography
+$font-family-sans-serif: 'Open Sans', sans-serif;
+$heading-font: 'Lato', sans-serif;
+
+// Bootstrap override
+$table-bg: $white;
+$table-cell-padding: 1rem;
+
+$checkbox-size: 20px;
+
+$form-check-input-gutter: 30px;

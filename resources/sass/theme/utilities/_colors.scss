@@ -1,0 +1,33 @@
+// $black: hsl(0, 0%, 4%);
+// $black-bis: hsl(0, 0%, 7%);
+// $black-ter: hsl(0, 0%, 14%);
+
+// $gray-darker: hsl(0, 0%, 21%);
+$gray-dark: #B0B0B0;
+// $gray: hsl(0, 0%, 48%);
+// $gray-light: hsl(0, 0%, 71%);
+// $gray-lighter: hsl(0, 0%, 86%);
+// $gray-lightest: hsl(0, 0%, 93%);
+
+// $white-ter: hsl(0, 0%, 96%);
+// $white-bis: hsl(0, 0%, 98%);
+$white: #F2F8EA;
+
+// $orange: hsl(14, 100%, 53%);
+// $yellow: hsl(48, 100%, 67%);
+// $green: hsl(141, 53%, 53%);
+// $turquoise: hsl(171, 100%, 41%);
+// $cyan: hsl(204, 71%, 53%);
+// $blue: #0083FF;
+// $purple: hsl(271, 100%, 71%);
+// $red: hsl(348, 86%, 61%);
+
+$acapulco: #7DAC9F;
+$pink: #E3C3BC;
+
+$error: #de3939;
+// $success: #27C18A;
+$primary: $acapulco;
+$primary-dark: #4A6060;
+$primary-dark-invert: findColorInvert($primary-dark);
+$secondary: $pink;

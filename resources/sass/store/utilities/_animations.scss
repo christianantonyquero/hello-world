@@ -1,0 +1,51 @@
+// ANIMATIONS.SCSS
+
+@keyframes fadeIn {
+	to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+	to { opacity: 0; }
+}
+
+.hollow-dots-spinner .dot {
+  border-color: $primary !important;
+}
+
+@keyframes countdown {
+  0% { opacity: .5; }
+  25% { opacity: 1; }
+  75% { opacity: 1; }
+  0% { opacity: .5; }
+}
+
+
+@keyframes subtleLeftSlide {
+    from {
+        transform: translateX(30px)
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes backgroundXSlide {
+    from {
+      background-position-x: 30px;
+    }
+    to { 
+      background-position-x: 0;
+    }
+}
+
+// Sidebar Slide In
+@keyframes slideInSidebar {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: inherit translateX(0%);
+    }
+}

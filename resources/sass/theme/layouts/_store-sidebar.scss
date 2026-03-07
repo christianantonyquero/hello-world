@@ -1,0 +1,177 @@
+// STORE CATEGORY .SCSS
+
+$sidebar-height: 85vh;
+
+.store-sidebar {
+  background-color: rgba($primary, 0.75);
+
+  .sidebar-header {
+    margin-bottom: $column-gap;
+
+    @include tablet {
+      margin-bottom: 0;
+    }
+  }
+
+  .sidebar-container .sidebar-content .sidebar-header .back-to-store {
+    background: url('../img/store/back.svg');
+    background-position: 0px center;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    padding: 10px 0px 7px 30px;
+    line-height: 1rem;
+    font-family: $family-serif;
+    color: $white;
+    text-shadow: 0px 2px 5px rgba($black, .5);
+    font-size: $size-4;
+    transition: all .2s ease;
+    animation: subtleLeftSlide .4s .3s ease-out backwards,
+               backgroundXSlide .3s .4s ease-out backwards;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    white-space: nowrap;
+
+    @include tablet {
+      position: absolute;
+      top: 9px;
+      left: -3%;
+    }
+
+    @include mobile {
+      display: none;
+    }
+
+    span {
+      display: inline-block;
+      transition: all .2s ease;
+    }
+
+    &:hover {
+      opacity: .6;
+      transform: translateX(-10px);
+      span {
+        padding-left: 5px;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .back-to-category.desktop-category {
+      display: none;
+    }
+  }
+  @media only screen and (min-width: 768.1px) {
+    .back-to-category.mobile-category {
+      display: none;
+    }
+  }
+
+  .back-to-category {
+    font-family: $family-serif;
+    font-size: $size-3;
+    color: $white;
+    text-shadow: 0px 2px 5px rgba($black, .5);
+    transition: all .2s ease;
+    display: block;
+    margin-top: 10px;
+
+    @include mobile{
+      font-size: 1rem;
+    }
+
+    &:hover {
+      opacity: .5;
+    }
+  }
+
+  @include tablet {
+    //margin-right: -100%;
+    margin-right: -10%;
+    max-width: 1500px;
+	  max-height: $sidebar-height;
+    border-radius: 40px 0px 0px 60px;
+    transform: perspective(50rem) rotateY(6deg) skew(3deg, 0deg);
+    padding: 0;
+    padding-right: 10%;
+    overflow: hidden;
+    box-shadow: none;
+
+    &:before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      border: solid 20px #E5C1C0;
+      border-right: 0;
+      border-top: solid 15px #E5C1C0;
+      border-bottom: solid 15px #E5C1C0;
+      top: 0%;
+      left: 0%;
+      z-index: 10;
+      pointer-events: none;
+      border-radius: 40px 0 0 60px;
+    }
+
+    .sidebar-container {
+      overflow: hidden;
+      max-height: $sidebar-height;
+      padding-right: 5%;
+      min-height: 510px;
+
+      .sidebar-content {
+        max-height: $sidebar-height;
+        margin-top: 10px;
+        transform: perspective(50rem) rotateY(-6deg) skew(-3deg, 0deg);
+        padding-left: 30px;
+
+        .sidebar-header {
+          padding: 0 30px;
+          padding-top: 60px;
+        }
+
+        .sidebar-scroll-container {
+          max-height: calc( #{$sidebar-height} - 50px);
+          // height: $sidebar-height;
+          flex: 1;
+          padding: 20px 30px 30px;
+          display: flex;
+          flex-direction: column;
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
+          
+          &::-webkit-scrollbar {
+            display: none;
+          }
+
+          .sidebar-scroll {
+            overflow-y: auto;
+            padding-bottom: 40px;
+            margin-right: 0px;
+            padding-right: $column-gap;
+            
+            &::-webkit-scrollbar-track
+            {
+              -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+              border-radius: 10px;
+              background-color: transparent;
+            }
+
+            &::-webkit-scrollbar
+            {
+              width: 12px;
+              background-color: transparent;
+              border-radius: 10px;
+            }
+
+            &::-webkit-scrollbar-thumb
+            {
+              border-radius: 10px;
+              -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+              background-color: $primary-dark;
+            }
+          }
+        }
+      }
+    }
+  }
+}

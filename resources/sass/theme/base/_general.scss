@@ -1,0 +1,23 @@
+// GENERAL
+
+body {
+  position: relative;
+
+  &:before {
+    //content: '';
+    pointer-events: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9000;
+    background: url('../img/store/grain.png');
+    top: 0;
+    left: 0;
+    opacity: .1;
+    animation: bgMove 1s steps(8, end) infinite both;
+  }
+}
+
+@keyframes bgMove {
+  to {background-position: 100%;}
+}

@@ -1,0 +1,14 @@
+
+.is-hidden-mobile, .hidden-mobile {
+  display: none !important;
+
+  @include tablet {
+    display: inherit !important
+  }
+}
+
+.mobile-only, .hidden-tablet-up {
+  @include tablet {
+    display: none !important
+  }
+}

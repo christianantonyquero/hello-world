@@ -1,0 +1,327 @@
+// STORE NAV.SCSS
+
+.nav-mobile {
+	display: flex;
+	flex-wrap: wrap;
+	@include desktop {
+		display: none;
+	}
+	@include tablet {
+		display: none;
+	}
+	a{
+			width: 50%;
+
+			.nav-item-mobile {
+					text-align: center;
+					// padding: 25px;
+					background-color: #e3c3bc;
+					// width: 50%;
+					height: 100%;
+					border-radius: 5px;
+					.nav-item-mobile-icon{
+						padding: 10px;
+						border-radius: 20px;
+						border: solid 5px #E3C3BC;
+						background: rgba(255, 255, 255, 0.5);
+						.nav-mobile-icon {
+							width: auto;
+							height: auto;
+						}						
+					}
+					.nav-mobile-title {
+						font-size: 24px;
+						padding: 10px 0px 10px 0px;
+						text-shadow: 0px 4px 4px #7DAC9F;
+					}
+			}
+	}
+
+}
+
+.nav-desktop {
+	@include mobile {
+		display: none;
+	}
+}
+
+.store-navigation {
+	height: 100vh;
+	padding:  2.5%;
+	overflow-y: auto;
+	position: relative;
+	width: 100%;
+	background: $primary-dark;
+	z-index: 20;
+	transform: translateX(-100vw);
+	transition: transform .3s ease;
+
+	&.nav-open {
+		transform: translateX(0);
+	}
+
+	a:hover {
+		background: darken($primary-dark, 5%);
+		transition: background .5s ease;
+	}
+
+	.nav-brand {
+		display: block;
+		margin: $column-gap auto $gap;
+		position: relative;
+		z-index: 10;
+		width: 300px;
+		max-width: 100%;
+	}
+
+	nav {
+		position: relative;
+		z-index: 10;
+	}
+
+	.navbar-list {
+		margin-bottom: 10px;
+	}
+
+	a {
+		display: block;
+		padding: 3px 10px;
+		color: $white;
+		transition: background .1s linear;
+		border-radius: $radius;
+
+		@include mobile{
+			padding: 8px 9px 8px 9px;
+		}
+
+		// router-link-exact-active router-link-active 
+		&.current, &.router-link-exact-active {
+			color: $secondary;
+			position: relative;
+
+			&:before {
+				content: '';
+				position: absolute;
+				width: 100%;
+				height: 3px;
+				top: 50%;
+				left: -100%;
+				margin-left: -15px;
+				background: $secondary;
+			}
+		}
+	}
+
+	.navbar-page {
+		font-size: $size-4;
+		padding: 3px 15px 5px;
+	}
+
+	.navbar-link {
+		font-family: $family-serif;
+		font-size: $size-5;
+		@include desktop{
+			padding-left: 30px;
+		}
+		@include mobile{
+			// padding-left: 0px;
+		}
+	}
+
+	.profile-footer {
+		display: flex;
+		justify-content: center;
+		.container {
+			margin: 5px;
+		}
+
+		.footer-navbar {
+			width: 100%;
+			display: flex;
+			justify-content: center;
+
+			@include mobile{
+				margin-top: 40px;
+				flex-wrap: wrap;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.copyright {
+				font-size: $size-7;
+				color: #b5b5b5;
+			}
+
+			a {
+				padding: 0px -5px;
+				font-size: $size-7;
+				color: #b5b5b5;
+				display: block;
+			}
+		}
+	}
+}
+
+.route-name-Home  .store-navigation {
+	transform: none
+}
+
+.nav-bg {
+	background: $primary-dark;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-image: url(../img/store/nav-bg.png);
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+	background-position: top left;
+	z-index: 1;
+	background-blend-mode: overlay;
+	width: 100%;
+	opacity: .2;
+}
+
+.store-app-wrapper {
+	height: 100vh;
+	width: 100vw;
+	overflow: hidden;
+	box-shadow: 0 2px 24px rgba(0,0,0,0.2);
+	position: absolute;
+	top: 0%;
+	right: 0;
+	transition: all .5s ease, border-radius .2s .3s ease;
+	z-index: 20;
+	z-index: 5;
+}
+
+.nav-open + .store-app-wrapper {
+	// right: -70vw;
+	// border-radius: 15px 0px 0px 15px;
+	// transform: scale(.9);
+	// transition: all .5s ease, border-radius .2s ease;
+}
+
+@include tablet {
+
+	.store-navigation {
+		z-index: 0;
+		transform: none;
+
+		&.nav-open {
+			translate: none;
+		}
+
+		.nav-brand, nav {
+			transform: translateX(-100%);
+			opacity: 0;
+			transition: all .3s ease;
+		}
+	
+		&.nav-open {
+			.nav-brand, nav {
+				transform: none;
+				opacity: 1;
+			}
+		}
+	}
+
+	.nav-bg {
+		opacity: 0;
+		transition: opacity .5s ease;
+	}
+
+	.nav-open .nav-bg {
+		opacity: .2;
+	}
+
+	.store-navigation, .nav-bg {
+		width: 50vw;
+	}
+	.nav-open + .store-app-wrapper {
+		right: -45vw;
+		border-radius: 15px 0px 0px 15px;
+		transform: scale(.9);
+		transition: all .5s ease, border-radius .2s ease;
+	}
+}
+
+
+@include desktop {
+	.store-navigation, .nav-bg {
+		width: 33.3vw;
+	}
+	.nav-open + .store-app-wrapper {
+		right: -28.3vw;
+	}
+}
+
+@include fullhd {
+	.store-navigation, .nav-bg {
+		width: 20vw;
+	}
+	.nav-open + .store-app-wrapper {
+		right: -15vw;
+	}
+}
+
+
+// NAV TOGGLE
+
+.store-navigation .nav-close {
+	display: block;
+	background: none;
+	border: none;
+	width: 44px;
+	height: 44px;
+	position: relative;
+	margin-right: 10px;
+	z-index: 5;
+	cursor: pointer;
+	transition: all .3s ease;
+	transform: translateX(100vw);
+
+	&:focus {
+		outline: none;
+	}
+
+
+	&:before {
+		content: '';
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background-image: url('../img/store/close.svg');
+		background-position: center;
+		background-size: center;
+		background-repeat: no-repeat;
+		transition: opacity .2s ease;
+	}
+
+	&:hover {
+		opacity: .5;
+	}
+}
+
+.nav-open .nav-close {
+	transform: translateX(0);
+}
+
+.route-name-Home .store-navigation .nav-close {
+	opacity: 0;
+	pointer-events: none;
+}
+
+@include mobile {
+	.store-navigation .nav-close {
+		display: none;
+	}
+}
+
+@include tablet {
+	.store-navigation .nav-close {
+		display: none;
+	}
+}

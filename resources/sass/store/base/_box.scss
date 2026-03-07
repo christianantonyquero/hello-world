@@ -1,0 +1,7 @@
+$box-padding: 2.5rem;
+
+.box {
+  box-shadow: 0 5px 21px -5px rgba($gray-light, .5);
+  padding: $box-padding;
+  background: #ffffff;
+}

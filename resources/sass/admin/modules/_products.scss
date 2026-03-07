@@ -1,0 +1,77 @@
+// Products / Assets
+
+.productItem, .assetItem {
+
+    & > img, & > a img {
+        @include boxShadow;
+        object-fit: cover;
+        width: 100%;
+        height: 18vw;
+
+        @media screen and (max-width: $tablet) {
+            height: 24vw; 
+        }
+
+        @media screen and (max-width: $mobile) {
+            height: 36vw; 
+        }
+    }
+
+    .productDescription, .assetDescription {
+        padding-top: 4px;
+        align-items: flex-start;
+
+        &.align-center {
+            align-items: center;
+
+            .productActions {
+                margin-right: 0;
+            }
+        }
+
+        @media screen and (max-width: $tablet) {
+            flex-direction: column;
+
+            &.align-center {
+                align-items: flex-start;
+            }
+        }
+        
+        h5 {
+            margin: 10px 12px 0 0;
+            font-weight: 300;
+
+            span.fileSize {
+                display:block;
+                font-size: .675em;
+                font-weight:300;
+                font-style: italic;
+            }
+
+            @media screen and (max-width: $tablet) {
+                font-size: 1rem;
+            }
+        }
+
+        h4  {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-top: 5px;
+
+            @media screen and (max-width: $tablet) {
+                font-size: 1.25rem;
+            }
+        }
+
+        .productActions, .assetActions {
+            @include displayFlex();
+            margin-right: -16px;
+            margin-top: 2px;
+
+            @media screen and (max-width: $tablet) {
+                @include displayFlex($direction: column, $align: flex-start);
+                width: 100%;
+            }
+        }
+    }
+}

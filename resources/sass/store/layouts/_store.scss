@@ -1,0 +1,143 @@
+// STORE .SCSS
+
+#store-app {
+	background: $primary-dark;
+}
+
+.store {
+	position: relative;
+	z-index: 1;
+}
+
+.store-page {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	background-color: #222;
+	width: 100vw;
+  overflow: scroll;
+}
+
+.store-page-body {
+	min-height: 100vh;
+	min-width: 100vw;
+	position: relative;
+	width: 100vw;
+	overflow: hidden;
+	width: fit-content;
+}
+
+.page-bg, .bg-video {
+	min-width: 100%;
+	min-height: 100%;
+	max-width: unset;
+	min-width: unset;
+	pointer-events: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: auto;
+	height: 100vh;
+	position: relative;
+
+	@media screen and (max-aspect-ratio: 1920/1080) {
+		width: auto;
+		height: 100vh;
+	}
+	@media screen and (min-aspect-ratio: 1920/1080) and (min-width: $tablet) {
+		width: 100vw;
+		height: auto;
+	}
+}
+
+.page-bg + .bg-video {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.page-content-container {
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-color:#222;
+  display: flex;
+  justify-content: flex-end;
+	align-items: stretch;
+
+  .page-content-inner {
+		width: 100vw;
+		height: 100vh;
+		overflow: hidden;
+		display: flex;
+		align-items: center;
+  }
+}
+
+.store-page .content-wrapper {
+	width: 100vw;
+	height: 100vh;
+	//background: rgba($primary, .5);
+	z-index: 500;
+	position: relative;
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	@include tablet {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+	}
+}
+
+.navigation-tip {
+	position: fixed;
+	width: 125px;
+	height: 85px;
+	bottom: 100px;
+	right: 50%;
+	z-index: 3;
+	pointer-events: none;
+	opacity: 0;
+	transform: translateX(50%);
+	transition: opacity .2s ease;
+
+	@include tablet {
+		transform: none;
+		right: 25px;
+	}
+	
+	&:before {
+		content: '';
+		width: 120%;
+		height: 120%;
+		top: -10%;
+		left: -10%;
+		position: absolute;
+		display: block;
+		background: #000;
+		filter: blur(25px);
+		opacity: .3;
+		border-radius: 50px;
+	}
+
+	&:after {
+		content: '';
+		width: 100%;
+		height: 100%;
+		background: url(../img/store/navigate.svg);
+		background-repeat: no-repeat;
+		background-position: center;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 2;
+	}
+}
+
+.store-page + .audio-player-wrapper .navigation-tip {
+	opacity: 1;
+}

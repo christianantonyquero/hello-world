@@ -1,0 +1,255 @@
+// User Profile Styles
+
+.user-profile {
+    background: $gray-lightest;
+    min-height: 100vh;
+
+    .profile-content {
+        margin-top: -150px;
+    }
+}
+
+.profile-header {
+    height: 300px;
+    background-color: $black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-image: url('../img/user-admin/profile-header.jpg');
+    background-size: cover;
+    background-position: center;
+
+    .lnk-logout {
+        display: flex;
+        align-items: center;
+
+        svg {
+            margin-right: 10px;
+        }
+
+        @include tablet {
+            margin-top: -20px;
+        }
+    }
+
+    .profile-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+
+        a {
+            color: $white;
+            text-shadow: 0px 0px 10px rgba($black, .5);
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            transition: all .2s ease;
+            font-family: $family-serif;
+            font-size: $size-4;
+
+            &:hover {
+                opacity: .5;
+            }
+        }
+
+        .user-profile-close {
+            display: flex;
+            align-items: center;
+            
+            svg {
+                display: block;
+                margin-left: 10px;
+                border: solid 3px transparent;
+                width: 50px;
+                height: 50px;
+                border-radius: 50px;
+
+                path {
+                    fill: $primary;
+                }
+            }
+        }
+    }
+}
+
+.profile-content {
+    position: relative;
+    z-index: 10;
+    padding: 50px 0;
+}
+
+.profile-intro {
+    background: $primary;
+    box-shadow: 0 8px 21px -5px rgba($gray-darker, .4);
+    padding-left: 35px;
+    overflow: hidden;
+
+    .column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        &.name-col {
+            text-align: center;
+            z-index: 5;
+            position: relative;
+
+            h5 {
+                font-size: $size-4;
+                color: $white;
+            }
+            h2 {
+                font-size: $size-1;
+                color: $white;
+            }
+
+        }
+
+        &.button-col {
+            justify-content: center;
+        }
+
+        @include tablet {
+            &.photo-col {
+                margin-right: 50px;
+            }
+
+            &.name-col {
+                align-items: flex-start;
+                text-align: left;
+            }
+
+            &.button-col {
+                align-items: flex-end;
+                flex: 0;
+                margin-left: 20px;
+            }
+        }
+    }
+}
+
+.user-profile-update-image-form {
+    position: relative;
+    cursor: pointer;
+    margin-top: -15px;
+
+    @include tablet {
+        margin: -20px 0;
+    }
+
+    label {
+        position: relative;
+        display: block;
+        cursor: pointer; 
+        margin-bottom: 0!important;
+        width: 130px;
+        height: 130px;
+        background: #fff;
+        border-radius: 50%;
+        overflow: unset;
+
+        &:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('../img/user-admin/profile-outline.svg');
+            opacity: .05;
+            background-size: cover;
+            transform: scale(2.2);
+            top: -2px;
+            left: 0;
+
+            @include tablet {
+                transform: scale(1.8);
+                opacity: .1;
+            }
+        }
+    }
+
+    label > figure, label > figure > img {
+        display: block;
+        width: 130px;
+        height: 130px;
+        overflow: hidden;
+        border-radius: 50%;
+
+    }
+
+    label:hover {
+        & figure:after {
+            opacity: 1;
+        }
+    }
+
+    label figure:after {
+        content: 'upload';
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.7);
+        color: white;
+        font-weight: bold;
+        font-size: 0.9rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity ease-in 0.2s;
+        border-radius: 100%;
+    }
+
+    input[type=file] {
+        display: block;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+        cursor: pointer;
+    }
+
+    .btn-change-photo {
+        display: none;
+    }
+}
+
+.edit-profile-col .box {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .box-body {
+        flex-grow: 1;
+    }
+}
+
+.profile-footer {
+    text-align: center;
+    padding-bottom: 40px;
+
+    .footer-nav {
+        margin-top: -10px;
+        margin-bottom: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+
+        a {
+            display: block;
+            padding: 10px 15px;
+        }
+    }
+
+    .copyright {
+        font-size: $size-7;
+        color: $gray-light;
+    }
+}

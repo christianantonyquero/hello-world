@@ -1,0 +1,43 @@
+// Cards
+
+.card {
+
+    @include boxShadow;
+    padding: 30px;
+
+    .card-body {
+        padding: 0;
+
+        h4 {
+            font-size: 1.5rem;
+            color: $secondaryColorDk;
+            font-weight: 300;
+            padding: 0 30px 1rem;
+            margin: 0 -30px 1.5rem;
+            border-bottom: 1px solid $body-bg;
+
+            a {
+
+                color: $secondaryColorDk;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+
+        .store-options-dropdown {
+            position: absolute;
+            top: 4px;
+            right: -4px;
+        }
+    }
+
+    .dropdown-menu {
+        &.show {
+            left: unset !important;
+            right: -10px !important;
+            transform: translate3d(0, 50px, 0px) !important;
+        }
+    }
+}

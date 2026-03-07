@@ -1,0 +1,184 @@
+// FOOTER
+
+// .audio-player-wrapper {
+	
+//   .audio-player-background {
+//   	background: rgb(0,0,0);
+// 		background: linear-gradient(0deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+//   	bottom: 0;
+//   	height: 100px;
+//   	left: 0;
+//   	position: fixed;
+//   	width: 100%;
+// 		z-index: 500;
+// 		pointer-events: none;
+// 	}
+	
+// 	.player-controls{
+// 		align-items: center;
+// 		bottom: 0;
+// 		display: flex;
+// 	  height: 66px;
+// 	  justify-content: center;
+// 	  padding-left: 20px;
+// 	  padding-top: 10px;
+// 	  position: fixed;
+// 	  right: 0;
+// 	  width: 122px;
+// 	  z-index: 2000;
+// 	}
+// }
+
+// .current-track {
+// 	align-items: center;
+// 	bottom: 20px;
+// 	display: flex;
+// 	justify-content: flex-start;
+// 	left: 20px;
+// 	position: fixed;
+// 	z-index: 2000;
+
+// 	.artwork {
+// 		margin-right: 15px;
+// 		background-position: center;
+// 		background-repeat: no-repeat;
+// 		background-size: cover;
+// 		background-color: $primary;
+// 		width: 45px;
+// 		height: 45px;
+// 	}
+
+// 	.track-info {
+// 	    color: #fff;
+// 	    font-size: 0.8rem;
+// 	    line-height: 1.6;
+
+// 		span {
+// 			display: block;
+// 			line-height: 1.25em;
+// 		}
+
+// 		.track {
+// 			font-weight: 900;
+// 			font-size: 1rem;
+// 		}
+// 		.artist, .album {
+// 			font-size: .75rem;
+// 		}
+// 	}
+// }
+
+// .track-progress {
+// 	width: 100%;
+// 	height: 5px;
+// 	position: fixed;
+// 	bottom: 0;
+// 	left: 0;
+// 	z-index: 2000;
+// }
+
+// .track-progress-bar-wrapper {
+//   background: rgba($primary, .3);
+
+//   .track-progress-bar {
+//     height: 5px;
+//     transition: width 1005ms linear;
+//     width: 0;
+//     background: $primary;
+//     box-shadow: 0 0 10px $primary;
+//   }
+// }
+
+// .player-controls {
+//   .btn {
+//     border-radius: 100%;
+//     width: 20px;
+//     height: 20px;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     border: 0;
+// 		padding: 0;
+		
+// 		&:hover {
+// 			background: transparent;
+// 			opacity: .5;
+// 		}
+//   }
+
+//   .btn-track {
+		
+//     &.btn-track-prev {
+//       background: url(../images/store/prev.svg) no-repeat center;
+//     }
+//     &.btn-track-next {
+//       background: url(../images/store/next.svg) no-repeat center;
+//     }
+//   }
+
+//   .btn-play-pause {
+//     span {
+//       display: block;
+//       height: 20px;
+//       width: 25px;
+//       &.is_playing {
+//         background: url(../images/store/pause.svg) no-repeat center;
+//       }
+//       &.is_paused {
+//         background: url(../images/store/play.svg) no-repeat center;
+//       }
+//     }
+//   }
+//   svg {
+//     width: 25px;
+//     height: 25px;
+//   }
+// }
+
+
+//////
+
+.audio-player {
+	position: fixed;
+	z-index: 999;
+	height: 80px;
+	width: 298px;
+	background: rgb(0,0,0);
+	background: linear-gradient(0deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 100%);
+	border: solid 6px $secondary;
+	border-radius: 8px;
+	box-sizing: content-box;
+	background: $primary;
+	opacity: 0;
+	animation: fadeIn .3s linear 1s forwards;
+	transform: translateX(-50%);
+  max-width: 90%;
+  bottom: 10px;
+	left: 50%;
+
+	@include from($mobile) {
+		max-width: calc(100% - 74px);
+		bottom: 20px;
+		left: 20px;
+		transform: none;
+	}
+
+	@include tablet {
+		bottom: 32px;
+		left: 32px;
+	}
+
+	span {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translateX(-50%) translateY(-50%);
+		color: $white;
+	}
+
+	iframe {
+		width: 100%;
+		position: relative;
+		z-index: 5;
+	}
+}

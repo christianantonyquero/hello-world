@@ -1,0 +1,156 @@
+/**
+* Variables
+*/
+
+// Colors
+$addColors: (
+  "secondary":($secondary, $secondary-invert)
+);
+$colors: map-merge($colors, $addColors);
+
+$link: $primary;
+
+$body-bg: #222;
+
+$border: $gray-lighter;
+$border-hover: $gray-light;
+$border-light: $gray-lightest;
+$border-light-hover: $gray-light;
+
+// Typography
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+$family-sans-serif: 'Roboto', BlinkMacSystemFont, -apple-system, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+$family-serif: $family-sans-serif;
+$body-family: $family-sans-serif;
+$hotspot-family: $family-sans-serif;
+$family-secondary: $family-sans-serif;
+$family-monospace: monospace;
+$render-mode: optimizeLegibility;
+
+$size-1: 3rem;
+$size-2: 2.5rem;
+$size-3: 2rem;
+$size-4: 1.5rem;
+$size-5: 1.25rem;
+$size-6: 1rem;
+$size-7: 0.75rem;
+
+$size-large: $size-3;
+$size-medium: $size-4;
+$size-normal: $size-5;
+$size-small: $size-6;
+
+$weight-light: 300;
+$weight-normal: 400;
+$weight-medium: 500;
+$weight-semibold: 600;
+$weight-bold: 700;
+$weight-black: 900;
+
+// Spacing
+
+$block-spacing: 1.5rem;
+
+// Responsiveness
+
+// The container horizontal gap, which acts as the offset for breakpoints
+$gap: 32px;
+
+$mobile: 480px;
+
+// 960, 1152, and 1344 have been chosen because they are divisible by both 12 and 16
+$tablet: 769px;
+
+// 960px container + 4rem
+$desktop: 960px + 2 * $gap;
+
+// 1152px container + 4rem
+$widescreen: 1152px + 2 * $gap;
+$widescreen-enabled: true;
+
+// 1344px container + 4rem
+$fullhd: 1344px + 2 * $gap;
+$fullhd-enabled: true;
+
+// Miscellaneous
+
+$easing: ease-out;
+$radius-small: 4px;
+$radius: 8px;
+$radius-large: 15px;
+$radius-rounded: 290486px;
+$speed: 86ms;
+
+// Hotspot
+
+$hotspot-family: $family-sans-serif;
+$hotspot-weight: $weight-bold;
+$hotspot-font-size: $size-5;
+
+// Store
+
+$product-bg: $white;
+$product-border-color: transparent;
+$product-border-color-hover: $primary;
+
+
+// Form
+$label-color: $gray-dark;
+$label-weight: $weight-normal;
+
+$input-border-color: $gray-lighter;
+$button-border-color: $gray-lighter;
+
+
+// Buttons
+
+@import "~bulma/sass/utilities/controls";
+
+// $button-color: $text-strong;
+// $button-background-color: $scheme-main;
+$button-family: $family-sans-serif;
+
+// $button-border-color: $border;
+$button-border-width: $control-border-width;
+
+$button-padding-vertical: calc(0.284em - #{$button-border-width});
+// $button-padding-horizontal: 1em;
+
+// $button-hover-color: $link-hover;
+// $button-hover-border-color: $link-hover-border;
+
+// $button-focus-color: $link-focus;
+// $button-focus-border-color: $link-focus-border;
+// $button-focus-box-shadow-size: 0 0 0 0.125em;
+// $button-focus-box-shadow-color: bulmaRgba($link, 0.25);
+
+// $button-active-color: $link-active;
+// $button-active-border-color: $link-active-border;
+
+// $button-text-color: $text;
+// $button-text-decoration: underline;
+// $button-text-hover-background-color: $background;
+// $button-text-hover-color: $text-strong;
+
+// $button-disabled-background-color: $scheme-main;
+// $button-disabled-border-color: $border;
+// $button-disabled-shadow: none;
+// $button-disabled-opacity: 0.5;
+
+// $button-static-color: $text-light;
+// $button-static-background-color: $scheme-main-ter;
+// $button-static-border-color: $border;
+
+// $button-colors: $colors;
+
+$button-radius: $radius;
+
+
+// Modal
+$modal-card-head-background-color: $white;
+// $modal-card-body-background-color: $white;
+
+$modal-card-head-padding: 30px;
+$modal-card-body-padding: 30px;
+

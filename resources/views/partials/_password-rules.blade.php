@@ -1,0 +1,1 @@
+<p class="help">Passwords must contain at least 1 letter, 1 number, and be at least 8 characters.</p>

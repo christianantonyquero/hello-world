@@ -1,0 +1,15 @@
+// Mixins
+
+@mixin displayFlex($direction: row, $justify: space-between, $align: center, $wrap: false) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+    @if $wrap {
+        flex-wrap: wrap;
+    }
+}
+
+@mixin boxShadow($color: rgba(0,0,0,.12), $distance: 10px, $blur: 25px, $spread: -5px) {
+    box-shadow: 0 $distance $blur $spread $color;
+}

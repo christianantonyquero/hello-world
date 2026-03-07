@@ -1,0 +1,161 @@
+// HOTSPOT .SCSS
+
+@keyframes ping {
+  0% { transform: scale(1);} 
+  10% { transform: scale(1.2); } 
+  25% { transform: scale(.8); }
+  50% { transform: scale(1); }
+  100% { transform: scale(1); } 
+}
+
+@for $i from 2 through 10 {
+  .hotspot-wrapper:nth-child(#{$i}n) .hotspot {
+    animation-delay: #{$i * .5}s;
+
+    &:before {
+      animation-delay: #{$i * .5}s;
+    }
+  }
+}
+
+
+
+
+  .hotspot-list {
+    display: block;
+    padding: 0;
+    height: initial;
+    position: initial;
+    width: 100%;
+    left: 0;
+    top: auto;
+
+    .hotspot {
+      padding: 0;
+      font-size: initial;
+      font-weight: initial;
+      animation: ping 3s infinite ease;
+      position: absolute;
+      background: transparent;
+      max-width: auto;
+      width: 30px;
+      height: 30px;
+      margin: -15px 0 0 -15px;
+      z-index: 600;
+      transition: all .2s ease;
+      background: $primary;
+      border: solid 6px $white;
+      border-radius: 50%;
+      box-shadow: 0 0 15px 15px rgba(#000, .2);
+      border: none;
+
+      .name {
+        color: #fff;
+        position: absolute;
+        top: $hotspot-font-size * -1.5;
+        font-size: $hotspot-font-size;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        font-weight: $hotspot-weight;
+        text-transform: uppercase;
+        width: auto;
+        white-space: nowrap;
+        transition: opacity .4s ease;
+        opacity: 0;
+        font-family: $hotspot-family;
+
+        &:before {
+          content: '';
+          display: block;
+          position: absolute;
+          width: 120%;
+          height: 100%;
+          top: 0px;
+          left: -10%;
+          background: rgba($black, .3);
+          z-index: -1;
+          filter: blur(5px);
+          opacity: .2;
+          transition: all .2s ease;
+          transform: scale(.5);
+        }
+      }
+
+      &:hover {
+        width: 56px;
+        height: 56px;
+        margin: -28px 0 0 -28px;
+        box-shadow: 0 0 10px 0px rgba(#fff, .2);
+        background-color: rgba(#000, .1);
+        animation: none;
+        border: solid 3px $white;
+
+        .name {
+          opacity: 1;
+
+          &:before {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+      }
+    }
+  }
+
+.hotspot {
+  &.hidden {
+    opacity: 0;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+// . hs-has-video - a class added to hotspot anchors that have videos
+
+.hotspot-wrapper {
+  opacity: 0;
+  animation: fadeIn .5s linear .1s forwards;
+}
+
+.hotspot-video {
+  // CSS for the hot spot video
+  position: absolute;
+  width: 100vw;
+  height: auto;
+  top: 0;
+  left: 0;
+  z-index: 700;
+  min-width: 100%;
+	min-height: 100%;
+	max-width: unset;
+	min-width: unset;
+	pointer-events: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: auto;
+	height: 100vh;
+  display: none;
+
+  @media screen and (max-aspect-ratio: 1920/1080) {
+		width: auto;
+		height: 100vh;
+	}
+
+	@media screen and (min-aspect-ratio: 1920/1080) and (min-width: $tablet) {
+		width: 100vw;
+		height: auto;
+	}
+
+  @include tablet {
+    display: initial;
+  }
+}
+
+
+// .hotspot-video-transition - vue transtion name for when video element is displayed
+// this is defined in the _vue-transition.scss partials
+// -- https://vuejs.org/v2/guide/transitions.html

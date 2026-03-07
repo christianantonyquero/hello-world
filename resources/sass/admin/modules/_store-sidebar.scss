@@ -1,0 +1,64 @@
+// Store - Sidebar
+
+#sidebar.store-sidebar {
+    width: 200px;
+    height: 100vh;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    box-shadow: none;
+    // box-shadow: 10px 0 25px -5px rgba(0,0,0,.1);
+    // border-right: 1px solid $border;
+
+    &.collapse {
+        display: block;
+    }
+
+    @media screen and (max-width: $tablet) {
+        position: fixed;
+        z-index: 10;
+        background-color:$white;
+        box-shadow: 10px 0 25px -5px rgba(0,0,0,.2);
+        left: 0;
+        height: 100% !important;
+        transition: 300ms ease-out;
+
+        &.collapse {
+            left: -100%;
+
+            &.show {
+                left: 0;
+            }
+        }
+    }
+
+    .store-logo {
+        width: 100%;
+        max-width: 120px;
+        margin: 15px;
+    }
+
+    ul {
+
+        li {
+
+            margin: 0 .5rem;
+
+            &:not(.button-nav) {
+                margin: 0 -.5rem;
+            }
+
+            a {
+
+                &.btn {
+                    text-align: center;
+                    justify-content: center;
+                    padding: 10px;
+                    height: auto;
+                }
+            }
+        }
+    }
+}

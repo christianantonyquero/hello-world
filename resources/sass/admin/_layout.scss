@@ -1,0 +1,25 @@
+// Layout
+
+.page-intro {
+    margin: 0 0 20px;
+    h2 {
+        margin: 0 30px 0 0;
+        font-weight: 300;
+    }
+}
+
+.section-title {
+
+    h4 {
+        margin-bottom: 0;
+        margin-right: 20px;
+        font-weight: 200;
+    }
+}
+
+.emptyStateWrapper {
+    @include displayFlex($direction: column, $justify: center, $align: center);
+    flex-basis: unset;
+    height: 70vh;
+    border-top: 1px solid $border;
+}

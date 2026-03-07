@@ -1,0 +1,177 @@
+// // Modal
+
+// .modal {
+
+//     form {
+//         max-width: 800px;
+//         margin: 0 auto;
+//         min-height: 100vh;
+
+//         &.skinny {
+//             max-width: 480px;
+//         }
+//     }
+    
+//     .modal-dialog {
+//         margin: 0 auto;
+//         padding: 5rem 0;
+//     }
+
+//     .modal-body {
+//         padding: 30px;
+//     }
+
+//     .modal-dialog-centered {
+//         align-items: flex-start;
+//     }
+
+//     .modal-footer {
+//         padding: 15px 30px;
+
+//         button {
+//             padding: 8px 24px;
+
+//             &.btn-secondary {
+//                 border: 1px solid $border;
+//                 background-color: transparent;
+//                 color: $secondaryColorDk;
+//             }
+//         }
+//     }
+
+//     h2 {
+
+//         span {
+//             display: block;
+//             font-size: .35em;
+//             text-transform: uppercase;
+//             letter-spacing: 1px;
+//             color: darken($border,25%);
+//         }
+//     }
+
+//     h3 {
+//         font-size: 1rem;
+//         margin-bottom: 15px;
+//     }
+
+//     .upload-box {
+//         @include displayFlex($direction: column, $align: stretch, $justify: center);
+//         background-color: lighten($green,40%);
+//         border-radius: 6px;
+//         border: 1px solid $border;
+//         padding: 10px 15px;
+
+//         input[type="file"] {
+//             // width: 0.1px;
+//             // height: 0.1px;
+//             // opacity: 0;
+//             // overflow: hidden;
+//             // position: absolute;
+//             // top: 10px;
+//             // left: 25%;
+//             // right: 25%;
+//             // margin: auto;
+//             // transform: translateY(100%);
+//             // z-index: 1;
+//             margin-bottom: 10px;
+
+//             & + label {
+//                 font-size: .875em;
+//                 font-weight: 700;
+//                 color: darken($green,10%);
+//                 @include displayFlex($direction: column);
+//                 cursor: pointer;
+//                 height: 100%;
+//                 padding: 50px 15px;
+//                 margin: 0 -15px -10px;
+
+//                 img {
+//                     margin-bottom: 6px;
+//                 }
+//             }
+
+//             &:focus + label {
+//                 outline: 1px dotted #000;
+//                 outline: -webkit-focus-ring-color auto 5px;
+//             }
+            
+//             &:focus + label,
+//             & + label:hover {
+//                 background-color: darken($body-bg,6%);
+//             }
+//         }
+//     }
+
+//     .sizeRow {
+
+//         margin-bottom: 15px;
+//     }
+
+//     label + hr {
+//         margin-top: 0;
+//     }
+// }
+
+// .sizeSelector {
+
+//     .form-inline {
+        
+//         .form-check {
+//             justify-content: flex-start;
+
+//             input[type="checkbox"] {
+//                 margin-right: 1rem;
+//             }
+//         }
+//     }
+// }
+
+// .assetSelector {
+
+//     .asset {
+//         max-width: 80px;
+//         margin-right: 20px;
+
+//         label {
+//             width: 100%;
+//             margin: 0;
+//         }
+
+//         img {
+//             width: 100%;
+//             object-fit: cover;
+//             height: 5.75vw;
+//             border: 4px solid $white;
+//             box-shadow: 0 0 1px 1px $border;
+//         }
+
+//         input {
+//             margin-top: 12px;
+//             margin-right: 0;
+//             margin-left: 0;
+            
+//             &:after {
+//                 border: 3px solid $white;
+//                 box-shadow: 0 0 0 1px $border;
+//             }
+
+//             &:checked {
+//                 & + label {
+//                     box-shadow: 0 0 0 3px $primaryColor;
+//                     margin: 0;
+//                 }
+//             }
+
+//             &[type="radio"] + label {
+//                 margin-right: 0;
+//             }
+//         }
+
+//         &.small {
+//             img {
+                
+//             }
+//         }
+//     }
+// }
