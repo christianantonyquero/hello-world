@@ -12,14 +12,15 @@
 @section('content')
 
 <div class="container-fluid">
-    <p>Total pages: {{ $pages->count() }}</p>
-    @foreach($pages as $page)
-        <div>
-            <a href="{{ route('admin.store.pages.edit', [$store, $page->id]) }}">{{ $page->name }}</a>
-            - {{ $page->slug }}
-            [<a href="{{ route('admin.store.pages.hotspots', [$store, $page->id]) }}">{{ $page->hotspots()->count() }} hotspots</a>]
+    <div class="card">
+        <div class="card-body">
+            <page-list
+                :initial-pages="{{ json_encode($pages) }}"
+                :total-pages="{{ json_encode(count($pages)) }}"
+                :store-id="{{ json_encode($store->id) }}">
+            </page-list>
         </div>
-    @endforeach
+    </div>
 </div>
 
 @endsection

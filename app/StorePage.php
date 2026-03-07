@@ -10,7 +10,7 @@ class StorePage extends Model
 {
    // comment out age gate use AgeGateTrait;
 
-    protected $appends = ['background_image_url'];
+    protected $appends = ['background_image_url', 'hotspots_count'];
     protected $fillable = [
         'store_id', 'background_image',
         'name', 'slug', 'minimum_age',
@@ -59,5 +59,10 @@ class StorePage extends Model
     public function getBackgroundImageUrlAttribute()
     {
         return $this->background_image ? Storage::url($this->background_image) : null;
+    }
+
+    public function getHotspotsCountAttribute()
+    {
+        return $this->hotspots()->count();
     }
 }

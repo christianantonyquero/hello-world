@@ -32,6 +32,7 @@ Vue.component('product-list', require('./components/ProductList.vue').default);
 Vue.component('create-product', require('./components/CreateProduct.vue').default);
 Vue.component('edit-product', require('./components/EditProduct.vue').default);
 
+Vue.component('page-list', require('./components/PageList.vue').default);
 Vue.component('create-store-page', require('./components/CreateStorePage.vue').default);
 Vue.component('edit-store-page', require('./components/EditStorePage.vue').default);
 

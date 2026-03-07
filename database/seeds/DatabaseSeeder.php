@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
             // User already exists
         }
         $this->call(WorldStoreSeeder::class);
+        $this->call(WorldStoreHotspotsSeeder::class);
     }
 }

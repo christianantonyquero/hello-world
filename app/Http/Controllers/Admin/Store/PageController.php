@@ -15,7 +15,7 @@ class PageController extends Controller
 {
     public function index(Request $request, Store $store)
     {
-        $pages = $store->pages()->where('parent_id', null)->simplePaginate(25);
+        $pages = $store->pages()->with(['hotspots', 'parent'])->get();
         return view('admin.store.pages.index', ['pages' => $pages, 'store' => $store]);
     }
 
