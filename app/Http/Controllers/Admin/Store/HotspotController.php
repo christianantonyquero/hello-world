@@ -43,6 +43,7 @@ class HotspotController extends Controller
             'x' => $validated['x'],
             'y' => $validated['y'],
             'video' => $validated['video'] ?? null,
+            'icon_url' => $validated['icon_url'] ?? null,
             'store_page_id' => $page->id
         ]);
 
@@ -64,6 +65,7 @@ class HotspotController extends Controller
             'x' => $validated['x'],
             'y' => $validated['y'],
             'video' => $validated['video'] ?? null,
+            'icon_url' => $validated['icon_url'] ?? null,
         ]);
 
         return response()->json(['success' => true, 'hotspot' => $hotspot]);

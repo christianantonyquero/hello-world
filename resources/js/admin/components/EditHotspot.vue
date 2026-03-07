@@ -109,11 +109,24 @@
                 <div class="form-group">
                     <label for="hs_video">Transition Video</label>
                     <input type="text" class="form-control" id="hs_video"
-                        required
                         placeholder="URL for a transition video"
                         v-model.trim="hotspot.video">
                     <small class="form-text text-muted">
                         A quick video that plays before the hotspot click request is ran.
+                    </small>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="hs_icon_url">Icon URL</label>
+                    <input type="text" class="form-control" id="hs_icon_url"
+                        placeholder="URL for the hotspot icon"
+                        v-model.trim="hotspot.icon_url">
+                    <small class="form-text text-muted">
+                        Optional: Icon image URL to display on the hotspot. If empty, uses the slug-based styling.
                     </small>
                 </div>
             </div>

@@ -30,7 +30,7 @@ class UpdateHotspot extends FormRequest
             'name' => 'required|max:250',
             'slug' => 'nullable|max:250|string',
             'type' => [
-                'required', 
+                'required',
                 'max:250',
                 Rule::in(StorePageHotspot::HOTSPOT_TYPES())
             ],
@@ -39,6 +39,7 @@ class UpdateHotspot extends FormRequest
             'display_order' => 'required|integer|gte:1',
             'value' => '',
             'video' => 'nullable|url',
+            'icon_url' => 'nullable|url',
         ];
 
         $type = $this->input('type');

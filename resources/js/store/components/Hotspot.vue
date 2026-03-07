@@ -6,7 +6,7 @@
             @click.prevent="clickHotSpot"
             class="hotspot"
             :class="hsClass"
-            :style="{ left: hotspot.x + '%', top: hotspot.y + '%' }">
+            :style="hotspotStyles">
             <span class="name">{{ hotspot.name }}</span>
         </a>
         <transition name="hotspot-video-transition" mode="in-out">
@@ -88,6 +88,17 @@ export default {
         hsClass() {
             let video_class_name = this.hasVideo ? 'hs-has-video' : '';
             return `${this.hotspot.slug ? this.hotspot.slug : ''} hs-type-${this.hotspot.type} ${video_class_name}`;
+        },
+        hotspotStyles() {
+            let styles = {
+                left: this.hotspot.x + '%',
+                top: this.hotspot.y + '%'
+            };
+            // If icon_url exists, use it as background-image
+            if (this.hotspot.icon_url) {
+                styles['--hotspot-icon'] = `url('${this.hotspot.icon_url}')`;
+            }
+            return styles;
         },
         hasVideo() {
             return this.hotspot.video ? true : false;

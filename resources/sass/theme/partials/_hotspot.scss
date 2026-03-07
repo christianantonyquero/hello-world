@@ -22,7 +22,7 @@
       height: 100%;
       top: 0;
       left: 0;
-      background-image: url('../img/store/hotspots/hotspot.webp');
+      background-image: var(--hotspot-icon, url('../img/store/hotspots/hotspot.webp'));
       background-repeat: no-repeat;
       background-size: contain;
     }

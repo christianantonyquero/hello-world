@@ -9,7 +9,7 @@ class StorePageHotspot extends Model
     protected $fillable = [
         'store_page_id', 'type',
         'name', 'slug', 'value', 'display_order',
-        'video',
+        'video', 'icon_url',
         'x', 'y'
     ];
 
