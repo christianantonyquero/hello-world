@@ -11,6 +11,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(UserSeeder::class);
+        try {
+            $this->call(UserSeeder::class);
+        } catch (\Exception $e) {
+            // User already exists
+        }
+        $this->call(WorldStoreSeeder::class);
     }
 }
