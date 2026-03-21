@@ -12,6 +12,7 @@ use App\LinkedSocialAccount;
 
 use App\Services\SocialAccountService;
 use Mockery;
+use App\Providers\RouteServiceProvider;
 
 // Contains Social Login and Manage Social Tests
 class SocialLoginControllerTest extends TestCase
@@ -68,7 +69,7 @@ class SocialLoginControllerTest extends TestCase
                                         $email=$user->email);
         
         $response = $this->get(route('auth.socialite.callback', ['provider' => $provider_name]));
-        $response->assertRedirect(route('home').'#');
+        $response->assertRedirect(RouteServiceProvider::HOME . '#');
         $this->assertAuthenticatedAs($user);
     }
 

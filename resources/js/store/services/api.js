@@ -69,7 +69,7 @@ export default {
   },
 
   async getHomePage(storeId) {
-    const response = await axios.get(`/store/${storeId}/api/pages/load/home-page`);
+    const response = await axios.get(`/store/${storeId}/api/pages/load/home`);
     return response.data;
   },
 

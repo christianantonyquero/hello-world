@@ -28,7 +28,7 @@ class AdminStoreTest extends TestCase
 
     public function test_store_can_be_created()
     {
-        Storage::fake('testing');
+        Storage::fake('public');
 
         $file = UploadedFile::fake()->image('logo.jpg');
 
@@ -80,7 +80,7 @@ class AdminStoreTest extends TestCase
 
     public function test_store_can_be_edited()
     {
-        Storage::fake('testing');
+        Storage::fake('public');
 
         $store = factory(Store::class)->create();
 

@@ -15,7 +15,7 @@ class WorldStoreHotspotsSeeder extends Seeder
 
         // Get the home page
         $homePage = StorePage::where('store_id', $store->id)
-            ->where('slug', 'home-page')
+            ->where('slug', 'home')
             ->first();
         if (!$homePage) return;
 
@@ -24,7 +24,7 @@ class WorldStoreHotspotsSeeder extends Seeder
 
         // Data for iconic places with coordinates
         $places = [
-            ['name' => 'Burj Khalifa', 'slug' => 'uae', 'x' => 45, 'y' => 35],
+            ['name' => 'Burj Khalifa', 'slug' => 'uae', 'x' => 45, 'y' => 35, 'icon_url' => url('/images/burj-khalifa-icon.png')],
             ['name' => 'Eiffel Tower', 'slug' => 'france', 'x' => 38, 'y' => 28],
             ['name' => 'Taj Mahal', 'slug' => 'india', 'x' => 60, 'y' => 42],
             ['name' => 'Great Wall of China', 'slug' => 'china', 'x' => 70, 'y' => 30],
@@ -52,7 +52,8 @@ class WorldStoreHotspotsSeeder extends Seeder
                     'value' => $countryPage->slug,
                     'x' => $place['x'],
                     'y' => $place['y'],
-                    'display_order' => $index + 1
+                    'display_order' => $index + 1,
+                    'icon_url' => $place['icon_url'] ?? null,
                 ]);
             }
         }

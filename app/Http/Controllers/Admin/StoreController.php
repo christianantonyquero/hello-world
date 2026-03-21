@@ -40,7 +40,7 @@ class StoreController extends Controller
         $store->is_test_mode = $request->is_test_mode ? true : false;
 
         if ($request->hasFile('logo')) {
-            $store->logo = $request->file('logo')->store('logos');
+            $store->logo = $request->file('logo')->store('logos', 'public');
         }
 
         if( $validated['cart_bg_image'] ?? false ) {
@@ -84,7 +84,9 @@ class StoreController extends Controller
 
         $store->is_test_mode = $request->is_test_mode ? true : false;
 
-    
+        if ($request->hasFile('logo')) {
+            $store->logo = $request->file('logo')->store('logos', 'public');
+        }
 
         if( $validated['cart_bg_image'] ?? false ) {
             $store->cart_bg_image = $request->file('cart_bg_image')->store('store/background_images');

@@ -25,8 +25,14 @@ class UpdateUserProfileRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
+            'display_name' => ['nullable', 'string', 'max:255'],
             'date_of_birth' => ['nullable', 'date'],
-            'phone' => ['nullable', 'string', 'max:50']
+            'phone' => ['nullable', 'string', 'max:50'],
+            'address' => ['nullable', 'string', 'max:255'],
+            'city' => ['nullable', 'string', 'max:255'],
+            'state_province' => ['nullable', 'string', 'max:255'],
+            'country' => ['nullable', 'string', 'max:255'],
+            'postal_code' => ['nullable', 'string', 'max:50'],
         ];
     }
 }

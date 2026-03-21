@@ -21,7 +21,11 @@ trait TestUtils
         $this->user = factory(User::class)->states('admin')->create();
         $this->products = factory(Product::class, 3)->create(['store_id' => $this->store->id]);
         foreach($this->products as $product){
-            $product->addSizes([['size' => 'XL', 'price' => rand(3, 12)], ['size' => 'S', 'price' => rand(3, 12)], ['size' => 'M', 'price' => rand(3, 12)]]);
+            $product->addSizes([
+                ['size' => 'XL', 'price' => rand(3, 12), 'shopify_variant_id' => 'test-xl-'.$product->id],
+                ['size' => 'S', 'price' => rand(3, 12), 'shopify_variant_id' => 'test-s-'.$product->id],
+                ['size' => 'M', 'price' => rand(3, 12), 'shopify_variant_id' => 'test-m-'.$product->id],
+            ]);
         }
     }
 

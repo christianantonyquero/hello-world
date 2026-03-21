@@ -162,7 +162,7 @@ class RegisterController extends Controller
         // Post User Registration Activies
 
         // send registration email to user
-        // Client asked to remove for launch - Mail::to($user)->send(new UserRegistered($user));
+        Mail::to($user)->send(new UserRegistered($user));
 
         // If user opts-in them add them to our Klavyo mailing list
         

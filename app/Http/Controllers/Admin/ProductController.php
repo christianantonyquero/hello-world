@@ -126,7 +126,7 @@ class ProductController extends Controller
 
             // Save Product
             $product->save();
-            return response()->json(['success' => true, 'product' => $product]);
+            return response()->json(['success' => true, 'product' => $product], 201);
     }
 
     public function edit(Request $request)

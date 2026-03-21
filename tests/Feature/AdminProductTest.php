@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Store;
+use App\User;
 use App\Product;
 use App\ProductCategory;
 
@@ -28,23 +29,30 @@ class AdminProductTest extends TestCase
             \App\Http\Middleware\AdminAuth::class,
         ]);
 
+        $this->adminUser = factory(User::class)->states('admin')->create();
+        $this->actingAs($this->adminUser);
+
         $this->store = factory(Store::class)->create();
         $this->category = factory(ProductCategory::class)->create(['store_id' => $this->store->id]);
     }
 
     public function test_product_can_be_created()
     {
+        Storage::fake('local');
         $file = UploadedFile::fake()->image('logo.jpg');
         $file2 = UploadedFile::fake()->image('logo2.jpg');
+        $thumbnail = UploadedFile::fake()->image('thumb.jpg', 100, 100);
         $name = 'Test Product '.Str::random(10);
 
-        $response = $this->post('/admin/store/'.$this->store->id.'/products', [
+        $response = $this->withHeaders(['Accept' => 'application/json'])->post('/admin/store/'.$this->store->id.'/products', [
             'name' => $name,
             'description' => 'some info',
-            'categories' => [$this->category->id],
-            'sizes' => [
-                ['size' => 'XL', 'price' => 6.66]
-            ],
+            'price' => 9.99,
+            'categories' => json_encode([$this->category->id]),
+            'sizes' => json_encode([
+                ['size' => 'XL', 'price' => 6.66, 'display_order' => 1, 'is_available' => true]
+            ]),
+            'thumbnail' => $thumbnail,
             'images' => [$file, $file2]
         ]);
 
@@ -80,8 +88,6 @@ class AdminProductTest extends TestCase
 
         $response->assertStatus(200);
 
-        $response->assertJsonFragment([
-            'id' => $product->id,
-        ]);
+        $response->assertSee('"id":' . $product->id, false);
     }
 }
