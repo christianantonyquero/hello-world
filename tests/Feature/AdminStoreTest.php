@@ -33,13 +33,11 @@ class AdminStoreTest extends TestCase
         $file = UploadedFile::fake()->image('logo.jpg');
 
         $name = 'Test Store '.Str::random(40);
+        $slug = 'test-store-'.Str::random(10);
         $response = $this->post('/admin/store', [
-            'tax_exempt' => false,
             'name' => $name,
+            'slug' => $slug,
             'logo' => $file,
-            'state_tax_rate' => 1.5,
-            'city_tax_rate' => 3.2,
-            'county_tax_rate' => 5,
         ]);
 
         $response->assertStatus(201);
@@ -47,9 +45,6 @@ class AdminStoreTest extends TestCase
         $this->assertArrayHasKey('admin_url', (array)json_decode($response->content()));
         $this->assertDatabaseHas('stores', [
             'name' => $name,
-            'state_tax_rate' => 1.5,
-            'city_tax_rate' => 3.2,
-            'county_tax_rate' => 5,
         ]);
 
         Storage::disk('public')->assertExists('logos/'.$file->hashName());
@@ -59,13 +54,11 @@ class AdminStoreTest extends TestCase
     public function test_create_store_endpoint_allows_null_taxes()
     {
         $name = 'Test Store '.Str::random(40);
+        $slug = 'test-store-'.Str::random(10);
         $response = $this->post('/admin/store', [
-            'tax_exempt' => false,
             'name' => $name,
+            'slug' => $slug,
             'logo' => null,
-            'state_tax_rate' => null,
-            'city_tax_rate' => null,
-            'county_tax_rate' => null,
         ]);
 
         $response->assertStatus(201);
@@ -73,9 +66,6 @@ class AdminStoreTest extends TestCase
         $this->assertArrayHasKey('admin_url', (array)json_decode($response->content()));
         $this->assertDatabaseHas('stores', [
             'name' => $name,
-            'state_tax_rate' => 0,
-            'city_tax_rate' => 0,
-            'county_tax_rate' => 0,
         ]);
     }
 
@@ -98,12 +88,9 @@ class AdminStoreTest extends TestCase
 
         $name = 'New Store '.Str::random(40);
         $response = $this->post('/admin/store/'.$store->id, [
-            'tax_exempt' => false,
             'name' => $name,
+            'slug' => $store->slug,
             'logo' => $file,
-            'state_tax_rate' => 2.5,
-            'city_tax_rate' => 4.2,
-            'county_tax_rate' => 7,
         ]);
 
         $response->assertStatus(200);
@@ -111,9 +98,6 @@ class AdminStoreTest extends TestCase
         $this->assertDatabaseHas('stores', [
             'id' => $store->id,
             'name' => $name,
-            'state_tax_rate' => 2.5,
-            'city_tax_rate' => 4.2,
-            'county_tax_rate' => 7,
         ]);
 
         Storage::disk('public')->assertExists('logos/'.$file->hashName());

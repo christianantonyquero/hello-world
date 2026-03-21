@@ -52,6 +52,7 @@ class UserProfileControllerTest extends TestCase
         $response = $this->actingAs($user)->patch(route('user-profile.update'), 
             $this->user_data);
         $response->assertSessionHasNoErrors();
+        $user->refresh();
 
         $this->assertEquals($user->name, $this->user_data['name']);
         $this->assertEquals($user->phone, $this->user_data['phone']);
@@ -84,6 +85,7 @@ class UserProfileControllerTest extends TestCase
         $response = $this->actingAs($user)->patch(route('user-profile.update'), 
             $this->user_data);
         $response->assertSessionHasNoErrors();
+        $user->refresh();
 
         // Test email did not change
         $this->assertEquals($user->email, $og_email);

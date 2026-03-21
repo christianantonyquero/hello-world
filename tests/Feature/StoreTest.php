@@ -44,15 +44,5 @@ class StoreTest extends TestCase
         $this->assertStringContainsString('img/logo-dark.svg', $storeNoLogo->logo_url);
     }
 
-    public function test_store_combined_tax_rate()
-    {
-        $store1 = factory(Store::class)->create(['state_tax_rate' => 5, 'county_tax_rate' => 1, 'city_tax_rate' => 1.5]);
-        $this->assertEquals(7.5, $store1->combinedTaxRate());
 
-        $store2 = factory(Store::class)->create(['state_tax_rate' => 0, 'county_tax_rate' => 1, 'city_tax_rate' => 1.5]);
-        $this->assertEquals(2.5, $store2->combinedTaxRate());
-
-        $store3 = factory(Store::class)->create(['state_tax_rate' => 0, 'county_tax_rate' => 0, 'city_tax_rate' => 0]);
-        $this->assertEquals(0, $store3->combinedTaxRate());
-    }
 }

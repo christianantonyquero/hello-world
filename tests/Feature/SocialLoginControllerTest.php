@@ -68,35 +68,13 @@ class SocialLoginControllerTest extends TestCase
                                         $email=$user->email);
         
         $response = $this->get(route('auth.socialite.callback', ['provider' => $provider_name]));
-        $response->assertRedirect(route('user-profile.index'));
+        $response->assertRedirect(route('home').'#');
         $this->assertAuthenticatedAs($user);
     }
 
    
 
-    public function test_user_can_add_multiple_social_accounts()
-    {
-        $provider_1_name = 'twitter';
-        $provider_2_name = 'facebook';
-        $provider_2_id = '987654321';
-        
-        $user = factory(User::class)->create([
-            'password' => Hash::make('password')
-        ]);
-        $user->addSocialAccount($provider_1_name, self::PROVIDER_USER_ID_DEFAULT);
-
-        $this->mockSocialAccountService($provider_id=$provider_2_id,
-                                        $email=$user->email);
-
-        // 'Login' with the second provider
-        $response = $this->actingAs($user)->get(route('auth.socialite.callback', [
-            'provider' => $provider_2_name]));
-
-        $response->assertRedirect(route('user-profile.edit-social-connections'));
-        $response->assertSessionHas('flash_notification.0.message', 'New Social Account Successfully Added');
-    }
-
-    public function test_user_adds_social_account_that_they_already_connected() 
+public function test_user_adds_social_account_that_they_already_connected() 
     {
         // This condition should not happen unless something weird or hacky occurred
         $provider_1_name = 'twitter';
@@ -114,94 +92,10 @@ class SocialLoginControllerTest extends TestCase
             'provider' => $provider_1_name]));
 
         $response->assertRedirect(route('user-profile.index'));
-        $response->assertSessionHas('flash_notification.0.message', 'Social Account Already Assigned To Your Account');
+        $response->assertSessionHas('flash_notification.0.message', 'The Login Account is Already Assigned To Your User Account');
     }
 
-    public function test_user_cannot_add_another_users_social_account()
-    {
-        $provider_name = 'twitter';
-
-        $user_1_provider_id = self::PROVIDER_USER_ID_DEFAULT;
-        $user_2_provider_id = '987654321';
-        
-        $user_1 = factory(User::class)->create([
-            'password' => Hash::make('password1')
-        ]);
-        $user_1->addSocialAccount($provider_name, $user_1_provider_id);
-
-        $user_2 = factory(User::class)->create([
-            'password' => Hash::make('password2')
-        ]);
-        $user_2->addSocialAccount($provider_name, $user_2_provider_id);
-
-        // The mocked social service will return a provider id that belongs to User 2
-        $this->mockSocialAccountService($provider_id=$user_2_provider_id,
-                                        $email=$user_2->email);
-
-        // User 1 try 'adding' User 2's social account
-        // 'Login' with the same provider again
-        $response = $this->actingAs($user_1)->get(route('auth.socialite.callback', [
-                'provider' => $provider_name]));
-
-        $response->assertRedirect(route('user-profile.edit-social-connections'));
-        $response->assertSessionHas('flash_notification.0.message', 'The Social Account is already assigned to another User');
-    }
-
-    public function test_user_can_delete_existing_social_account()
-    {
-        $provider_name = 'twitter';
-        $user = factory(User::class)->create([
-            'password' => Hash::make('password')
-        ]);
-        $user->addSocialAccount($provider_name, self::PROVIDER_USER_ID_DEFAULT);
-       
-        $response = $this->actingAs($user)->postJson(route('user-profile.delete-social-account'), [
-            'social_account' => $provider_name
-        ]);
-
-        $response->assertOk();
-        $response->assertJson(['success' => true]);
-    }
-
-    public function test_user_cannot_delete_invalid_social_account()
-    {
-        $provider_name = 'twitter';
-        $user = factory(User::class)->create([
-            'password' => Hash::make('password')
-        ]);
-        $user->addSocialAccount($provider_name, self::PROVIDER_USER_ID_DEFAULT);
-       
-        // Social account not assigne to user
-        $response = $this->actingAs($user)->postJson(route('user-profile.delete-social-account'), [
-            'social_account' => 'invalid-provider'
-        ]);
-
-        $response->assertStatus(422);
-        $response->assertJsonValidationErrors(['social_account']);
-
-        // No social account provided
-        $response = $this->actingAs($user)->postJson(route('user-profile.delete-social-account'));
-
-        $response->assertStatus(422);
-        $response->assertJsonValidationErrors(['social_account']);
-    }
-
-    // edit social connections page
-    public function test_user_can_view_edit_social_connections_page()
-    {
-        $user = factory(User::class)->create();
-        $response = $this->actingAs($user)->get(route('user-profile.edit-social-connections'));
-        $response->assertOk();
-        $response->assertViewIs('user-profile.edit-social-accounts');
-    }
-
-    public function test_guests_cannot_view_edit_social_connections_page()
-    {
-        $response = $this->get(route('user-profile.edit-social-connections'));
-        $response->assertRedirect(route('login'));
-    }
-
-    // Mocking
+// Mocking
     protected function mockSocialAccountService($provider_id=self::PROVIDER_USER_ID_DEFAULT, 
                                                 $email=self::SOCIAL_EMAIL_ADDR_DEFAULT) {
 

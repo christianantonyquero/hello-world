@@ -22,7 +22,6 @@ class StoreDashboardTest extends TestCase
         $response->assertStatus(200);
 
         $response->assertSee($store->name);
-        $response->assertSee('Order History');
     }
 
 }

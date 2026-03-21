@@ -38,7 +38,7 @@ class AdminProductTest extends TestCase
         $file2 = UploadedFile::fake()->image('logo2.jpg');
         $name = 'Test Product '.Str::random(10);
 
-        $response = $this->post('/admin/store/'.$this->store->id.'/product', [
+        $response = $this->post('/admin/store/'.$this->store->id.'/products', [
             'name' => $name,
             'description' => 'some info',
             'categories' => [$this->category->id],
@@ -76,7 +76,7 @@ class AdminProductTest extends TestCase
         $product->addCategories(collect([$this->category]));
         $product->addImage('product_images/test.png');
 
-        $response = $this->get('/admin/store/'.$this->store->id.'/product/'.$product->id);
+        $response = $this->get('/admin/store/'.$this->store->id.'/products/'.$product->id.'/edit');
 
         $response->assertStatus(200);
 

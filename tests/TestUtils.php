@@ -17,7 +17,7 @@ trait TestUtils
 
     protected function scaffold_store()
     {
-        $this->store = factory(Store::class)->create(['state_tax_rate' => 5, 'county_tax_rate' => 1, 'city_tax_rate' => 1.5]);
+        $this->store = factory(Store::class)->create();
         $this->user = factory(User::class)->states('admin')->create();
         $this->products = factory(Product::class, 3)->create(['store_id' => $this->store->id]);
         foreach($this->products as $product){
@@ -45,8 +45,8 @@ trait TestUtils
                     ->click('@product-'.$this->product2->id.'-cart')
                     ->pause(300);
 
-            $this->cartTotal =  $this->product->price($this->product->sizes[0]->size) * 2 +
-                                $this->product2->price($this->product2->sizes[0]->size) * 3;
+            $this->cartTotal =  $this->product->price($this->product->sizes[0]) * 2 +
+                                $this->product2->price($this->product2->sizes[0]) * 3;
 
         });
     }
@@ -56,7 +56,7 @@ trait TestUtils
         Cart::add([
             'id' => $this->products[0]->id.'-'.$this->products[0]->sizes[0]->id,
             'name' => $this->products[0]->name,
-            'price' => $this->products[0]->price($this->products[0]->sizes[0]->size),
+            'price' => $this->products[0]->price($this->products[0]->sizes[0]),
             'quantity' => 2,
             'associatedModel' => $this->products[0],
             'attributes' => [
@@ -67,7 +67,7 @@ trait TestUtils
         Cart::add([
             'id' => $this->products[1]->id.'-'.$this->products[1]->sizes[0]->id,
             'name' => $this->products[1]->name,
-            'price' => $this->products[1]->price($this->products[1]->sizes[0]->size),
+            'price' => $this->products[1]->price($this->products[1]->sizes[0]),
             'quantity' => 3,
             'associatedModel' => $this->products[1],
             'attributes' => [
@@ -75,14 +75,7 @@ trait TestUtils
             ],
         ]);
 
-        $condition = new \Darryldecode\Cart\CartCondition(array(
-            'name' => 'Taxes',
-            'type' => 'tax',
-            'target' => 'total',
-            'value' => $this->store->combinedTaxRate().'%',
-        ));
 
-        Cart::condition($condition);
     }
 
     protected function scaffold_orders()
@@ -114,15 +107,15 @@ trait TestUtils
 
         // add some items
         $this->orders[0]->items()->create([
-            'price' => $this->store->products[0]->price($this->store->products[0]->sizes[0]->size),
-            'subtotal' => $this->store->products[0]->price($this->store->products[0]->sizes[0]->size) * 3,
+            'price' => $this->store->products[0]->price($this->store->products[0]->sizes[0]),
+            'subtotal' => $this->store->products[0]->price($this->store->products[0]->sizes[0]) * 3,
             'quantity' => 3,
             'product_id' => $this->store->products[0]->id,
             'size_id' => $this->store->products[0]->sizes[0]->id,
         ]);
         $this->orders[0]->items()->create([
-            'price' => $this->store->products[1]->price($this->store->products[1]->sizes[0]->size),
-            'subtotal' => $this->store->products[1]->price($this->store->products[1]->sizes[0]->size) * 1,
+            'price' => $this->store->products[1]->price($this->store->products[1]->sizes[0]),
+            'subtotal' => $this->store->products[1]->price($this->store->products[1]->sizes[0]) * 1,
             'quantity' => 1,
             'product_id' => $this->store->products[0]->id,
             'size_id' => $this->store->products[1]->sizes[0]->id,

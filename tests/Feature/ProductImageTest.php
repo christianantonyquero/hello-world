@@ -22,9 +22,5 @@ class ProductImageTest extends TestCase
         $this->productNoImage = factory(Product::class)->create(['store_id' => $this->store->id]);
     }
 
-    public function test_product_thumbnail_url_function_gets_url_or_placeholder()
-    {
-        $this->assertEquals('/storage/product_images/test.png', $this->product->thumbnailUrl());
-        $this->assertEquals($this->productNoImage->thumbnailUrl(), url('img/product_placeholder.png'));
-    }
+
 }

@@ -56,7 +56,7 @@ class RegisterControllerTest extends TestCase
         $user = factory(User::class)->create();
 
         $response = $this->actingAs($user)->get(route('register'));
-        $response->assertRedirect(route('user-profile.index'));
+        $response->assertRedirect(route('home'));
     }
 
     public function test_can_user_register() 
@@ -90,7 +90,7 @@ class RegisterControllerTest extends TestCase
                    $mail->user->id === $user->id;
         });
 
-        $response->assertRedirect(route('user-profile.edit-payment-method'));
+        $response->assertRedirect(route('home'));
     }
 
     public function test_invalid_user_registration()
