@@ -49,3 +49,7 @@ Images are compiled from `public/img` to `public/images`
 - Make Feature branches off develop. Merge or create PR in Gitlab
 - stage is our release branch. Develop gets merged to stage and deployed to staging server on Forge
 - master is the production branch. Stage gets merged to master and autodeployed to production on Digital Ocean
+
+
+# Author
+Christian Antony Quero
